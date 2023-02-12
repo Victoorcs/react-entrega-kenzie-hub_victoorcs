@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
 import { useState } from "react"
 import { StyledLogin } from "./style"
+import logoImg from '../../assets/Logo_1.svg'
 
 
 
@@ -46,7 +47,7 @@ const LoginPage = () =>{
     return(
         <StyledLogin>
 
-            <header><h1>Kenzie Hub</h1></header>
+            <header><img src={logoImg} alt="logo" /></header>
             <main>
                     <h2>Login</h2>
                 <form onSubmit={handleSubmit(signIn)}>
@@ -63,13 +64,14 @@ const LoginPage = () =>{
                         <button type="submit">Entrar</button>
 
                 </form>
-
-
-
-            <Link to="/cadastro">
-            cadastrar
-            </Link>
-
+                        <div className="divForm">
+                                <span>Ainda não possui uma conta?</span>
+                            <button className="cadBtn">
+                                     <Link to="/cadastro">
+                                     Cadastrar
+                                        </Link>
+                            </button>
+                    </div>
 
         </main>
         </StyledLogin>
