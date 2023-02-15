@@ -17,6 +17,7 @@ export const StyledDash = styled.div`
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
+        box-shadow: 0px 1px 1px #292a2b;
     }
     nav button{
         width: 70px;
@@ -32,6 +33,7 @@ export const StyledDash = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        box-shadow: 0px 1px 1px #292a2b;
     }
     header p {
         color: white;

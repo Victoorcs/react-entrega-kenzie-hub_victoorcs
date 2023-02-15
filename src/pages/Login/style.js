@@ -47,6 +47,7 @@ export const StyledLogin = styled.div`
  }
  form p {
     color: white;
+    font-size:0.7rem;
  }
  form div{
     display: flex;
@@ -69,6 +70,7 @@ export const StyledLogin = styled.div`
    border: 1.2px solid #FF577F;
    border-radius: 4px;
  }
+
 .cadBtn{
    width: 259.9px;
    height: 38.5px;

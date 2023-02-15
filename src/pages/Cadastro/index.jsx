@@ -6,6 +6,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
 import logoImg from '../../assets/Logo_1.svg'
 import { StyledCadastro } from './style'
+import {  toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const schema = yup.object({
@@ -25,12 +27,14 @@ const CadastroPage = () =>{
     const navigate = useNavigate()
 
     const signIn = async (data) =>{
-    console.log(data)
+    
     try{
        await api.post('https://kenziehub.herokuapp.com/users',data)
+       toast.success("Conta criada com sucesso!")
        navigate('/')
     }
     catch(error) {
+        toast.error("Ops! Algo deu errado.")
         console.log(error)
     }
 }
@@ -40,7 +44,9 @@ const CadastroPage = () =>{
 
     return(
         <StyledCadastro>
-             <header><img src={logoImg} alt="logo" /></header>
+             <header><img src={logoImg} alt="logo" />
+             <button onClick={() => navigate('/')}>Voltar</button>
+             </header>
             <main>
                 <h2>Crie sua conta</h2>
                 <form onSubmit={handleSubmit(signIn)}>
@@ -88,6 +94,7 @@ const CadastroPage = () =>{
 
                 </form>
             </main>
+          
         </StyledCadastro>
     )
 }

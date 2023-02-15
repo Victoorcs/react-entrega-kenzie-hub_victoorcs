@@ -7,6 +7,7 @@ import * as yup from "yup"
 import { useState } from "react"
 import { StyledLogin } from "./style"
 import logoImg from '../../assets/Logo_1.svg'
+import {  toast } from 'react-toastify'
 
 
 
@@ -33,13 +34,14 @@ const LoginPage = () =>{
     try{
        const response = await api.post('/sessions',data)
        const {user ,token} = response.data
-       console.log(response)
+       toast.success("Login realizado com sucesso!")
         setUsuario(usuario)
         localStorage.setItem('@KENZIEHUBTOKEN', token)
         localStorage.setItem('@KENZIEHUBUSER', user.id)
        navigate('/home')
     }
     catch(error) {
+        toast.error("Ops! Algo deu errado.")
         console.log(error)
     }
 }
@@ -66,11 +68,7 @@ const LoginPage = () =>{
                 </form>
                         <div className="divForm">
                                 <span>Ainda não possui uma conta?</span>
-                            <button className="cadBtn">
-                                     <Link to="/cadastro">
-                                     Cadastrar
-                                        </Link>
-                            </button>
+                            <button className="cadBtn" onClick={() => navigate('/cadastro')}>Cadastre-se</button>
                     </div>
 
         </main>

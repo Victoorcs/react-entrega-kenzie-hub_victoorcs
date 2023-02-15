@@ -17,8 +17,16 @@ display: flex;
     height: 100px;
     width: 100vw;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+ }
+
+ header button{
+      width: 80px;
+      height: 45px;
+      background: #212529;
+      border-radius: 4px;
+      color: white;
  }
 
  main{
