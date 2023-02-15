@@ -97,6 +97,9 @@ main{
     width: 370px;
     height: 892px;
 }
+header button {
+   cursor: pointer;
+}
 form input{
     width: 330px;
     height: 48px;
@@ -104,6 +107,7 @@ form input{
 form button{
     width: 326px;
     height: 48px;
+    cursor: pointer;
 }
 form select{
     width: 330px;

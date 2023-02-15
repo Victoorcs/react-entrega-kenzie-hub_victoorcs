@@ -47,6 +47,10 @@ export const StyledDash = styled.div`
 
     @media screen and (min-width: 769px){
 
+        nav button{
+            cursor: pointer;
+        }
+
         header{
             height: 118px;
             display: flex;

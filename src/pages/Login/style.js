@@ -69,6 +69,7 @@ export const StyledLogin = styled.div`
    color: white;
    border: 1.2px solid #FF577F;
    border-radius: 4px;
+   
  }
 
 .cadBtn{
@@ -106,10 +107,12 @@ export const StyledLogin = styled.div`
    form button{
       width: 324px;
       height: 48px;
+      cursor: pointer;
    }
    .cadBtn{
       width: 324px;
       height: 48px;
+      cursor: pointer;
    }
 
 
