@@ -8,6 +8,8 @@ import { useState } from "react"
 import { StyledLogin } from "./style"
 import logoImg from '../../assets/Logo_1.svg'
 import {  toast } from 'react-toastify'
+import { useContext } from "react"
+import { UserContext } from "../../providers/UserContext"
 
 
 
@@ -24,27 +26,11 @@ const LoginPage = () =>{
         resolver: yupResolver(schema)
     })
     const navigate = useNavigate()
-    const [loading, setLoading] = useState(false)
-    const [usuario,setUsuario] = useState([])
+   
+    const {loading,setLoading,user,setUser,signIn} = useContext(UserContext)
 
 
-    const signIn = async (data) =>{
-    console.log(data)
-    setLoading(true)
-    try{
-       const response = await api.post('/sessions',data)
-       const {user ,token} = response.data
-       toast.success("Login realizado com sucesso!")
-        setUsuario(usuario)
-        localStorage.setItem('@KENZIEHUBTOKEN', token)
-        localStorage.setItem('@KENZIEHUBUSER', user.id)
-       navigate('/home')
-    }
-    catch(error) {
-        toast.error("Ops! Algo deu errado.")
-        console.log(error)
-    }
-}
+   
 
     return(
         <StyledLogin>

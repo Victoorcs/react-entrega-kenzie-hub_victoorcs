@@ -35,10 +35,11 @@ display: flex;
     align-items: center;
     justify-content: flex-start;
     width: 296px;
-    height: 830px;
+    height: 745px;
     background: #212529;
     box-shadow: 0px 3.20867px 32.0867px -8.02168px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
+    padding: 20px;
     
  }
  main h2 {
@@ -50,7 +51,7 @@ display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 30px;
  }
  form label{
     color: white;

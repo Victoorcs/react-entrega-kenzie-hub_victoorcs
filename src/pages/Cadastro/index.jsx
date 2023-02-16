@@ -8,6 +8,8 @@ import logoImg from '../../assets/Logo_1.svg'
 import { StyledCadastro } from './style'
 import {  toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useContext } from "react"
+import { UserContext } from "../../providers/UserContext"
 
 
 const schema = yup.object({
@@ -24,22 +26,8 @@ const CadastroPage = () =>{
     const {register, handleSubmit, formState:{ errors }} = useForm({
         resolver: yupResolver(schema)
     })
+    const {signUp} = useContext(UserContext)
     const navigate = useNavigate()
-
-    const signIn = async (data) =>{
-    
-    try{
-       await api.post('https://kenziehub.herokuapp.com/users',data)
-       toast.success("Conta criada com sucesso!")
-       navigate('/')
-    }
-    catch(error) {
-        toast.error("Ops! Algo deu errado.")
-        console.log(error)
-    }
-}
-
-
 
 
     return(
@@ -49,7 +37,7 @@ const CadastroPage = () =>{
              </header>
             <main>
                 <h2>Crie sua conta</h2>
-                <form onSubmit={handleSubmit(signIn)}>
+                <form onSubmit={handleSubmit(signUp)}>
                     <div>
                         <label htmlFor="name">Nome:</label>
                         <input type="text" id='name' { ...register('name')}/>

@@ -30,7 +30,8 @@ export const StyledLogin = styled.div`
     background: #212529;
     box-shadow: 0px 3.20867px 32.0867px -8.02168px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
-    gap: 35px;
+    gap: 60px;
+    padding: 20px;
  }
  main h2 {
     font-size:1,3rem;
@@ -41,6 +42,7 @@ export const StyledLogin = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20px;
  }
  form label{
     color: white;
@@ -85,6 +87,7 @@ export const StyledLogin = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 5px;
 }
 .divForm span {
    color: white;
