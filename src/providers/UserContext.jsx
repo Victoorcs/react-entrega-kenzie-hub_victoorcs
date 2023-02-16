@@ -32,7 +32,7 @@ export const UserProvider = ({children}) =>{
         }
    
         const signIn = async (data) =>{
-            console.log(data)
+            
             setLoading(true)
             try{
                const response = await api.post('/sessions',data)
