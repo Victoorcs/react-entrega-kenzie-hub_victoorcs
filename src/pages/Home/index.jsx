@@ -6,11 +6,14 @@ import { StyledDash } from "./style"
 import logoImg from '../../assets/Logo_1.svg'
 import { useContext } from "react"
 import { UserContext } from "../../providers/UserContext"
+import { TechContext } from "../../providers/TechContext"
 
 
 const HomePage = () => {
  
   const {user,setUser,logout} = useContext(UserContext)
+  const {tech} = useContext(TechContext)
+
 
 
   return (
@@ -24,9 +27,17 @@ const HomePage = () => {
         <p> {user.course_module}</p>
       </header>
       <main>
-        <div>
-        <h2>Que pena! Estamos em desenvolvimento :(</h2>
-        </div>
+              <div>
+              <h1>Tecnologias</h1>
+              <ul>
+                { tech?.map((technology) => (
+                  <li key={technology.id}>
+                    <p>{technology.name}</p>
+                    <p>{technology.description}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
       </main>
     </StyledDash>
   )

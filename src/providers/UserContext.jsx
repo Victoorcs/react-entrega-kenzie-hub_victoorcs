@@ -11,21 +11,52 @@ export const UserContext = createContext({})
 export const UserProvider = ({children}) =>{
 
     const [loading, setLoading] = useState(false)
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState(null)
 
     const navigate = useNavigate()
 
-    useEffect(() => {
+
+
+    useEffect(()=>{
+        const token = localStorage.getItem('@KENZIEHUBTOKEN')
+        if(token){
+            const autoLogin = async () =>{
+                try{
+                    const response = await api.get('/profile',{
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                          }
+                    })
+                    setUser(response.data)
+                    navigate('/home')
+                }
+                catch (error){
+                    console.log(error)
+                    localStorage.removeItem('@KENZIEHUBTOKEN')
+                }
+            }
+            autoLogin()
+        }
+    },[])
+
+   
+       
         const getUser = async () => {
-          const userId = localStorage.getItem("@KENZIEHUBUSER")
-          const response = await api.get(`/users/${userId}`)
-          setUser(response.data)
+            try{
+
+                const userId = localStorage.getItem("@KENZIEHUBUSER")
+                const response = await api.get(`/users/${userId}`)
+                setUser(response.data)
+                return(response)
+            }
+            catch(error){
+                console.error(error)
+            }
         };
-        getUser();
-      }, []);
+     
     
       const logout = () => {
-        setUser([])
+        setUser(null)
         localStorage.removeItem('@KENZIEHUBTOKEN')
         localStorage.removeItem('@KENZIEHUBUSER')
         navigate('/')
@@ -68,6 +99,7 @@ export const UserProvider = ({children}) =>{
                 setLoading,
                 user,
                 setUser,
+                getUser,
                 logout,
                 signIn,
                 signUp
