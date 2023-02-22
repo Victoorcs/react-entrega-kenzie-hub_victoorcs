@@ -7,14 +7,19 @@ import logoImg from '../../assets/Logo_1.svg'
 import { useContext } from "react"
 import { UserContext } from "../../providers/UserContext"
 import { TechContext } from "../../providers/TechContext"
+import TechCreateForm from "../../Components/FormTech"
+import TechUpdateForm from "../../Components/FormTechUpdate"
+
+
 
 
 const HomePage = () => {
  
   const {user,setUser,logout} = useContext(UserContext)
-  const {tech} = useContext(TechContext)
+  const {tech,techRemove,setEditTech} = useContext(TechContext)
 
 
+  
 
   return (
     <StyledDash>
@@ -27,13 +32,17 @@ const HomePage = () => {
         <p> {user.course_module}</p>
       </header>
       <main>
-              <div>
-              <h1>Tecnologias</h1>
+        {/*setEditTech ? <TechUpdateForm/>: null*/}
+        <TechCreateForm/>
+              <div className="techList">
+            
               <ul>
                 { tech?.map((technology) => (
                   <li key={technology.id}>
-                    <p>{technology.name}</p>
-                    <p>{technology.description}</p>
+                    <p>{technology.title}</p>
+                    <p>{technology.status}</p>
+                    {/*<button onClick={()=> setEditTech(tech)}>Editar</button>*/}
+                    <button onClick={()=>techRemove(technology.id)}>x</button>
                   </li>
                 ))}
               </ul>
