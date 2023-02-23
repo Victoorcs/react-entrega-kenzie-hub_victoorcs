@@ -18,9 +18,9 @@ const TechUpdateForm = () =>{
 
     const {register, handleSubmit} = useForm()
 
-    const submit = (formData,event) =>{
+    const submit = async (formData) =>{
         
-    techUpdate(formData,event)
+    await techUpdate(formData)
     closeModal()
     }
 
@@ -53,7 +53,7 @@ const TechUpdateForm = () =>{
                         <option value="Avançado">Avançado</option>
                     </select>
                 </div>
-                <button type="submit" className="cadBtn" id={identify} >Atualizar tecnologia</button>
+                <button type="submit" className="cadBtn"  >Atualizar tecnologia</button>
             </form>
             </StyledModal>
         </Modal>

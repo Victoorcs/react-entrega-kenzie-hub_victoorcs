@@ -78,7 +78,7 @@ const CadastroPage = () =>{
                     </select>
                     </div>
                     
-                    <button type="submit">Entrar</button>
+                    <button type="submit">Cadastrar</button>
 
                 </form>
             </main>

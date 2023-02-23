@@ -10,7 +10,7 @@ export const TechProvider = ({children}) =>{
     const [tech,setTech] = useState([])
     const {getUser} = useContext(UserContext)
     const [editTech,setEditTech] = useState(null)
-    const [identify,setIdentify] = useState("")
+    const [identify,setIdentify] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
     
     useEffect(()=>{
@@ -43,8 +43,9 @@ export const TechProvider = ({children}) =>{
             const response = await api.post('/users/techs', formData, {
                 headers:{ Authorization: `Bearer ${token}`}
             })
-            console.log(response.data)
+            
             setTech([...tech, response.data])
+          
         } catch (error) {
             console.error('Erro ao criar tecnologia:', error.message)
         }
@@ -59,7 +60,7 @@ export const TechProvider = ({children}) =>{
                 headers:{ Authorization: `Bearer ${token}`}
             }
             )
-            console.log(response.data)
+            
             const newTech = tech.filter(tech => tech.id !== techId)
             setTech(newTech)
             
@@ -69,30 +70,37 @@ export const TechProvider = ({children}) =>{
 
     }
 
-    const techUpdate = async (formData,event) =>{
+    const techUpdate = async (formData) =>{
         try {
             const token = localStorage.getItem('@KENZIEHUBTOKEN')
-           console.log(identify)
-            const response = await api.put(`/users/techs/${identify}`,formData,{
+      
+            const response = await api.put(`/users/techs/${identify.id}`,formData,{
                 headers:{ Authorization: `Bearer ${token}`}
             })
-            console.log(response)
-            const newTech = tech.map(tech =>{
-                if(identify === tech.id){ return {...tech,...formData}
-                }
-                else{tech}
+            
+            // const newTech = tech.map(tech =>{
+            //     if(identify === tech.id){ return {...tech,...formData}
+            //     }
+            //     else{tech}
+            // })
+            const newTech =  await api.get('/profile',{
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                  }
             })
-            setTech(newTech)
+            setTech(newTech.data.tech)
+            console.log(tech)
 
         } catch (error) {
             console.log(error)
         }
     }
 
-    const userId = event =>{
-        setIdentify(event.target.id)
-        setIsModalOpen(true)
-    }
+    // const userId = (event) =>{
+    //     setIdentify(event.target.id)
+    //     console.log(event.target.id)
+    //     setIsModalOpen(true)
+    // }
 
 
 
@@ -105,10 +113,10 @@ export const TechProvider = ({children}) =>{
             techUpdate,
             editTech,
             setEditTech,
-            userId,
             setIsModalOpen,
             isModalOpen,
-            identify
+            identify,
+            setIdentify
         }}>
             {children}
         </TechContext.Provider>

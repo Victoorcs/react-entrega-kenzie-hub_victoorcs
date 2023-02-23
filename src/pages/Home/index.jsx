@@ -16,10 +16,10 @@ import TechUpdateForm from "../../Components/FormTechUpdate"
 const HomePage = () => {
  
   const {user,setUser,logout} = useContext(UserContext)
-  const {tech,techRemove,userId,identify} = useContext(TechContext)
+  const {tech,techRemove,userId,identify,setIdentify,setIsModalOpen} = useContext(TechContext)
 
 
-  
+ 
 
   return (
     <StyledDash>
@@ -38,7 +38,11 @@ const HomePage = () => {
             
               <ul>
                 { tech?.map((technology) => (
-                  <li key={technology.id} id={identify} onClick={userId}>
+                  <li key={technology.id}  onClick={() => {
+                    setIdentify(technology)
+                     setIsModalOpen(true)
+                     
+                  }}>
                     <p>{technology.title}</p>
                     <p>{technology.status}</p>
                     <button onClick={()=>techRemove(technology.id)}>x</button>
