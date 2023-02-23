@@ -16,7 +16,7 @@ import TechUpdateForm from "../../Components/FormTechUpdate"
 const HomePage = () => {
  
   const {user,setUser,logout} = useContext(UserContext)
-  const {tech,techRemove,setEditTech} = useContext(TechContext)
+  const {tech,techRemove,userId,identify} = useContext(TechContext)
 
 
   
@@ -32,16 +32,15 @@ const HomePage = () => {
         <p> {user.course_module}</p>
       </header>
       <main>
-        {/*setEditTech ? <TechUpdateForm/>: null*/}
+         <TechUpdateForm/>
         <TechCreateForm/>
               <div className="techList">
             
               <ul>
                 { tech?.map((technology) => (
-                  <li key={technology.id}>
+                  <li key={technology.id} id={identify} onClick={userId}>
                     <p>{technology.title}</p>
                     <p>{technology.status}</p>
-                    {/*<button onClick={()=> setEditTech(tech)}>Editar</button>*/}
                     <button onClick={()=>techRemove(technology.id)}>x</button>
                   </li>
                 ))}

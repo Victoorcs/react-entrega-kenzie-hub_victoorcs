@@ -10,6 +10,8 @@ export const TechProvider = ({children}) =>{
     const [tech,setTech] = useState([])
     const {getUser} = useContext(UserContext)
     const [editTech,setEditTech] = useState(null)
+    const [identify,setIdentify] = useState("")
+    const [isModalOpen, setIsModalOpen] = useState(false)
     
     useEffect(()=>{
        
@@ -67,15 +69,16 @@ export const TechProvider = ({children}) =>{
 
     }
 
-    const techUpdate = async (formData, techId) =>{
+    const techUpdate = async (formData,event) =>{
         try {
             const token = localStorage.getItem('@KENZIEHUBTOKEN')
-            const response = await api.put(`/users/techs/${techId}`,formData,{
+           console.log(identify)
+            const response = await api.put(`/users/techs/${identify}`,formData,{
                 headers:{ Authorization: `Bearer ${token}`}
             })
-            console.log(response.data.message)
+            console.log(response)
             const newTech = tech.map(tech =>{
-                if(techId === tech.id){ return {...tech,...formData}
+                if(identify === tech.id){ return {...tech,...formData}
                 }
                 else{tech}
             })
@@ -84,6 +87,11 @@ export const TechProvider = ({children}) =>{
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const userId = event =>{
+        setIdentify(event.target.id)
+        setIsModalOpen(true)
     }
 
 
@@ -96,7 +104,11 @@ export const TechProvider = ({children}) =>{
             techRemove,
             techUpdate,
             editTech,
-            setEditTech
+            setEditTech,
+            userId,
+            setIsModalOpen,
+            isModalOpen,
+            identify
         }}>
             {children}
         </TechContext.Provider>

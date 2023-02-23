@@ -17,9 +17,61 @@ form{
     gap: 20px;
 }
 
-form h2{
+form p{
     color: white;
 }
-
+form label{
+    color:white;
+}
+form input{
+    color: white;
+    background-color:#343B41;
+    border: 1.2px solid #F8F9FA;
+    border-radius: 4px;
+    width: 264.66px;
+    height: 38.5px;
+    font-size: 1rem;
+ }
+ form select{
+    color: white;
+    background-color:#343B41;
+    border: 1.2px solid #F8F9FA;
+    border-radius: 4px;
+    width: 264.66px;
+    height: 38.5px;
+    font-size: 1rem;
+ }
+.modalH{
+    display:flex;
+    width: 369px;
+    height: 50px;
+    background: #343B41;
+    border-radius: 4px 4px 0px 0px;
+    align-items: center;
+    justify-content: space-around;
+}
+.closeBtn{
+    background: #343B41;
+    color:white;
+    width: 20px;
+    height: 20px;
+}
+.inputM{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+.selectM{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+.cadBtn{
+    width: 270px;
+    height: 48px;
+    background: #FF577F;
+    color:white;
+    border-radius:4px;
+}
 
 `

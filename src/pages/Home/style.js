@@ -84,7 +84,7 @@ export const StyledDash = styled.div`
         height: 48.73px;
         background: #121214;
         border-radius: 4px;
-        margin-top: 5px;
+        margin-top: 15px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;

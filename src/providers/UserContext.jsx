@@ -20,6 +20,7 @@ export const UserProvider = ({children}) =>{
     useEffect(()=>{
         const token = localStorage.getItem('@KENZIEHUBTOKEN')
         if(token){
+           
             const autoLogin = async () =>{
                 try{
                     const response = await api.get('/profile',{
@@ -36,6 +37,9 @@ export const UserProvider = ({children}) =>{
                 }
             }
             autoLogin()
+        }
+        else{
+            navigate('/')
         }
     },[])
 

@@ -8,13 +8,13 @@ const ProtectedRoutes = () =>{
     const navigate = useNavigate()
    
 
-    useEffect(()=>{
+   /* useEffect(()=>{
         
         if (!user){
             
             navigate('/')
         }
-    },[])
+    },[])*/
     return (
         <>
         {user ? <Outlet/> : null}

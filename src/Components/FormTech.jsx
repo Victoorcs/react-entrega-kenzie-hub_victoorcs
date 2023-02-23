@@ -31,18 +31,32 @@ const TechCreateForm = () =>{
         <h2>Tecnologias</h2>
         <button onClick={openModal}>+</button>
         </div>
-        <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
+        <Modal isOpen={isModalOpen} onRequestClose={closeModal} style={{
+
+          overlay:{
+            backgroundColor:'rgba(0,0,0,0.5)'
+          },
+          content:{border:'none',backgroundColor:'rgb(0,0,0,0.5)',display:'flex',justifyContent:'center',alignItems:'center'}
+        }}>
         <StyledModal>
         <form onSubmit={handleSubmit(submit)}>
-            <h2>Crie uma Tecnologia</h2>
-        <input type="text" {...register("title")} placeholder="Titulo"/>
-        <select {...register("status")}>
+            <div className="modalH">
+            <p>Cadastrar Tecnologia</p>
+            <button onClick={closeModal} className="closeBtn">X</button>
+            </div>
+            <div className="inputM">
+            <label htmlFor="title">Titulo</label>
+        <input type="text" {...register("title")} placeholder="Titulo" id="title"/>
+            </div>
+            <div className="selectM">
+        <label htmlFor="level">Selecionar Status</label>
+        <select {...register("status")} id="level">
             <option value="Iniciante">Iniciante</option>
             <option value="Intermediario">Intermediario</option>
             <option value="Avançado">Avançado</option>
         </select>
-            <button type="submit">Cadastrar tecnologia</button>
-            <button onClick={closeModal}>Fechar modal</button>
+            </div>
+            <button type="submit" className="cadBtn">Cadastrar tecnologia</button>
         </form>
         </StyledModal>
         </Modal>
